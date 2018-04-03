@@ -1,0 +1,41 @@
+<div class="container" style="margin-top: 20px;">
+	<h2>Table of SLAS</h2>
+  	<p>This table shows information of the SLAS.</p>     
+  	<div style="max-height: 70vh; overflow:auto;">          
+	  	<table class="table table-striped header-fixed-slascomp" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Company id</th>
+	        		<th>ID. policy</th>
+	        		<th>Endpoint</th>
+	        		<th># sessions</th>
+	        		<th>Bandwidth UP</th>
+	        		<th>Bandwidth DOWN</th>
+	        		<th>Ping max. delay</th>
+	        		<th>Delete</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr ng-repeat="slas in slasList">
+			        <td>{{ slas.policyUser }}</td>
+	        		<td>{{ slas.policyID }}</td>
+	        		<td>{{ slas.endPoint }}</td>
+	        		<td>{{ slas.numSessions }}</td>
+	        		<td>{{ slas.bandwidthUP }}</td>
+	        		<td>{{ slas.bandwidthDOWN }}</td>
+	        		<td>{{ slas.pingMaxDelay }}</td>
+	        		<td style="padding-top: 6px;">
+	        			<button type="button" style="padding: 4px 20px;font-size: 10px;" class="btn btn-danger" ng-click="removeSlas(slas)">x</button>
+	        		</td>
+	      		</tr>
+	      		<tr ng-show="showslasspinmanag">
+	      			<td></td>
+	      			<td></td>
+	      			<td></td>
+			      	<td>
+			      		<wave-spinner></wave-spinner>
+			      	</td>
+			    </tr> 
+	  	</table>
+  	</div>
+</div>

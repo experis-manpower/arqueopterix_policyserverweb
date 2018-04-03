@@ -1,0 +1,22 @@
+<div class="companycontainer">
+
+
+	<div class="companyitem" style="height: 85vh;">
+	
+		<div class="container" style="padding-top: 15px;">			
+			<button type="button" class="btn btn-info" ng-click="showSlasList()">{{ btnText }}</button>
+		</div>
+		
+		<div class="ext-content" ng-show="showList">				
+				<div ng-include="'views/slas/slasList.html'"></div>
+		</div>
+		<div class="ext-content" ng-show="!showList">				
+				<div ng-include="'views/slas/createSlasList.html'"></div>
+		</div>			
+	
+		
+	</div>
+
+	<!-- <div class="companyitem2"></div> -->
+
+</div>

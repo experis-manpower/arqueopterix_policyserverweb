@@ -1,0 +1,138 @@
+<div class="container" style="margin-top: 20px;" ng-show="!showAlarmsBySessionInt">
+	<h2>Table of SESSIONS</h2>
+  	<p>This table shows information of the SESSIONS registered.</p>  
+  	<div style="max-height: 70vh; overflow:auto;">             
+	  	<table class="table table-striped header-fixed-companyses" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Session Id.</th>
+	        		<th>Destination IP</th>
+	        		<th>Destination Port</th>
+	        		<th>Origin IP</th>
+	        		<th>Origin Port</th>
+	        		<th>Alerts</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr ng-repeat="session in sessionList">
+			        <td>{{ session.sessionID }}</td>
+	        		<td>{{ session.destinationIP }}</td>
+	        		<td>{{ session.portDestinationIP }}</td>
+	        		<td>{{ session.originIP }}</td>
+	        		<td>{{ session.portOriginIP }}</td>
+	        		<td>        		   
+						<button class="button botonimagen" ng-show="{{session.anyAlarms}}" ng-click="showAlertsBySession(session)" style="border-radius: 15px;">
+							<img ng-src="./resources/images/hazard.png" alt="Hazard" height="25px" width="25px"> 
+						</button>
+					</td>   		
+	      		</tr>
+	      		<tr ng-show="showsessionspin">
+	      			<td></td>
+	      			<td></td>
+			      	<td>
+			      		<wave-spinner></wave-spinner>
+			      	</td>
+			    </tr> 
+	  	</table>
+	 </div>
+</div>
+
+<div class="container" style="margin-top: 20px;" ng-show="showAlarmsBySessionInt">
+	<h2>Table of ALERTS by a session</h2>
+  	<p>This table shows information of the ALERTS registered for session: {{ selectedSession.sessionID }}</p>
+  	<p>
+  		<button ng-click="goBack()" class="btn btn-info">Go Back</button>
+  	</p>   
+  	<div style="max-height: 70vh; overflow:auto;">             
+	  	<table class="table table-striped header-fixed" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Alert Id.</th>
+	        		<th>Session Id.</th>
+	        		<th>Latency</th>
+	        		<th>Jitter</th>
+	        		<th>Bandw. UP</th>
+	        		<th>Ban. DOWN</th>
+	        		<th>Packet Loss</th>
+	        		<th>QoS Level</th>
+	        		<th>Recep. Date</th>
+	        		<th>Policy Id.</th>
+	        		<th>FIRED</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr ng-repeat="alert in alarmsBySessionLocal">
+			        <td>{{ alert.alertId }}</td>
+	        		<td>{{ alert.session }}</td>
+	        		<td>{{ alert.latency }}</td>
+	        		<td>{{ alert.jitter }}</td>
+	        		<td>{{ alert.bandwithUp }}</td>
+	        		<td>{{ alert.bandwithDown }}</td>
+	        		<td>{{ alert.packetloss }}</td>  
+	        		<td>{{ alert.qoslevel }}</td>
+	        		<td>{{ alert.date }}</td>
+	        		<td >
+	        			<button type="button" class="btn btn-info"  ng-show="{{ alert.showbutton }}"
+	        				ng-click="selectAlert(alert)" style="padding: 4px 20px;font-size: 10px;" data-toggle="modal" data-target="#miModal">
+	        				{{ alert.policyID }}
+	        			</button>        		
+	        		</td>  
+	        		<td>
+	        			<img ng-src="{{ alert.urlImg }}" alt="" height="42" width="42"> 
+	        		</td>   		
+	      		</tr>
+	      		<tr ng-show="showsessionalertspin">
+	      			<td></td>
+	      			<td></td>
+	      			<td></td>
+	      			<td></td>
+	      			<td></td>
+			      	<td>
+			      		<wave-spinner></wave-spinner>
+			      	</td>
+			      	<td></td>
+			      	<td></td>
+			      	<td></td>
+			      	<td></td>
+			      	<td></td>
+			    </tr> 
+	  	</table>
+  	</div>
+</div>
+
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Policy associated</h4>
+      </div>
+      <div class="modal-body">
+      	       
+        <table class="table table-striped header-fixed-companyses" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Policy Id.</th>
+	        		<th>End point</th>
+	        		<th># sessions</th>
+	        		<th>Bandwidth UP</th>
+	        		<th>Bandwidth DOWN</th>
+	        		<th>Ping max. delay</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr>
+			        <td>{{ selectedPolicy.policyID }}</td>
+	        		<td>{{ selectedPolicy.endPoint }}</td>
+	        		<td>{{ selectedPolicy.numSessions }}</td>
+	        		<td>{{ selectedPolicy.bandwidthUP }}</td>
+	        		<td>{{ selectedPolicy.bandwidthDOWN }}</td>
+	        		<td>{{ selectedPolicy.pingMaxDelay }}</td>        		      		
+	      		</tr>
+	  	</table>
+      </div>
+    </div>
+  </div>
+</div>

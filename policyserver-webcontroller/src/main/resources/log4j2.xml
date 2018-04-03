@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<properties>
+		<property name="log-path">/log</property>
+		<property name="pattern">[%d{ISO8601}] %-5level %c %M - %msg%xEx%n</property>
+	</properties>
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${pattern}"/>
+		</Console>
+
+		<RollingFile name="RollingFile" fileName="${log-path}/log_file.log" filePattern="${log-path}/log_file-%i.log">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="15 KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="2"/>
+		</RollingFile>
+
+	</appenders>
+	<loggers>
+		<root level="trace"> <!-- We log everything -->
+			<appender-ref ref="Console"/> <!-- To console -->
+			<appender-ref ref="RollingFile"/> <!-- And to a rotated file -->
+		</root>
+	</loggers>
+</configuration>

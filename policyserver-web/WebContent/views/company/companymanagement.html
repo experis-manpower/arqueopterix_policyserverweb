@@ -1,0 +1,200 @@
+
+<div class="companycontainer" ng-show="!showSlasAssociated && !showCreateNewUser && !showcreationSlas && !showsessions">
+
+	<div class="companyitem" style="height: 85vh;">
+	
+		<div class="container" >
+		  <h2>Table of companies</h2>
+		  <p>This table shows information of the companies.</p>   
+		  <p>
+		  	<button type="button" class="btn btn-info" ng-click="showCreateUser()">{{ btnText }}</button>
+		  </p>		  
+		  <div style="max-height: 70vh; overflow:auto;">       
+			  <table class="table table-striped header-fixed-comp" style="margin-top: 10px;">
+			    <thead>
+			      <tr>
+			        <th>Company name</th>
+			        <th>User name</th>
+			        <th>User enabled</th>
+			        <th>SLAS</th>
+			        <th>Sessions</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-repeat="user in userList">
+			        <td>{{ user.company }}</td>
+			        <td>{{ user.username }}</td>
+			        <td>{{ user.enabled }}</td>
+			        <td>
+			        	<button type="button" class="btn btn-info" style="padding: 4px 20px;font-size: 10px;" ng-click="showSlash(user)">
+			        		Company Slas
+			        	</button>
+			        </td>
+			        <td>
+			        	<button type="button" class="btn btn-success" style="padding: 4px 20px;font-size: 10px;" ng-click="showSessions(user)">
+			        		Company Sessions
+			        	</button>
+			        </td>
+			      </tr>
+			      <tr ng-show="showspin">
+			      	<td>
+			      		<wave-spinner></wave-spinner>
+			      	</td>
+			      </tr> 
+			      
+			  </table>
+		  </div>  
+		</div>
+	
+		
+	</div>
+
+	<!-- <div class="companyitem2"></div> -->
+
+</div>
+
+
+<div class="container" style="margin-top: 20px;" ng-show="showSlasAssociated">
+	<h2>Table of SLAS by Company</h2>
+  	<p>This table shows information of the SLAS of the company: {{ companySelected }}</p>      
+  	<p>
+  		<button ng-click="goBack()" class="btn btn-info">Go Back</button>
+  		<button type="button" class="btn btn-success" ng-click="showCreateSlas()">CREATE NEW SLAS</button>
+  	</p>       
+  	<table class="table table-striped header-fixed-slascomp" style="margin-top: 10px;">
+    	<thead>
+      		<tr>
+        		<th>Company name</th>
+        		<th>ID. policy</th>
+        		<th>Endpoint</th>
+        		<th># sessions</th>
+        		<th>Bandwidth UP</th>
+        		<th>Bandwidth DOWN</th>
+        		<th>Ping max. delay</th>
+        		<th>Delete</th>
+      		</tr>
+		</thead>
+    	<tbody>
+      		<tr ng-repeat="slas in slasListByCompany">
+		        <td>{{ companySelected }}</td>
+        		<td>{{ slas.policyID }}</td>
+        		<td>{{ slas.endPoint }}</td>
+        		<td>{{ slas.numSessions }}</td>
+        		<td>{{ slas.bandwidthUP }}</td>
+        		<td>{{ slas.bandwidthDOWN }}</td>
+        		<td>{{ slas.pingMaxDelay }}</td>
+        		<td style="padding-top: 6px;">
+        			<button type="button" style="padding: 4px 20px;font-size: 10px;" class="btn btn-danger" ng-click="removeSlas(slas)">x</button>
+        		</td>
+      		</tr>
+      		<tr ng-show="showslasspin">
+		      	<td>
+		      		<wave-spinner></wave-spinner>
+		      	</td>
+		    </tr> 
+  	</table>
+</div>
+
+
+<div class="container" style="margin-top: 20px;"  ng-show="showCreateNewUser">
+	<h1>USER Creation form </h1>
+	<button type="button" class="btn btn-info" ng-click="showCreateUser()">{{ btnText }}</button>
+	<form name="usuarioForm" style="margin-top: 25px; border-style: solid; border-color: grey;" novalidate>			
+		<div class="form-group" style="margin-left: 10px; margin-right: 10px; margin-top: 15px;">
+	    	<label for="inputName">User name</label>
+	    	<input type="text" class="form-control" id="inputName" placeholder="Enter your name" ng-model="pUser.username">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+		    <label for="inputPassword">User password</label>
+	    	<input type="text" class="form-control" id="inputPassword" placeholder="Enter your password" ng-model="pUser.password">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+		    <label for="inputCompany">User company</label>
+	    	<input type="text" class="form-control" id="inputCompany" placeholder="Enter your company" ng-model="pUser.company">
+	  	</div>		  	
+	  	<button type="button" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 15px;" ng-click="createNewUser()">Create</button>
+	</form>	
+</div>
+
+<div class="container" style="margin-top: 20px;" ng-show="showcreationSlas">
+	<h1>SLAS Creation form for {{ companySelected }}</h1>	
+	<button type="button" class="btn btn-info" ng-click="notShowCreateSlas()">GO BACK</button>
+	<form name="userForm" style="margin-top: 25px; border-style: solid; border-color: grey;" novalidate>			
+		<div class="form-group" style="margin-left: 10px; margin-right: 10px; margin-top: 15px;">
+	    	<label for="inputEndPoint">End point</label>
+	    	<input type="text" class="form-control" id="inputEndPoint" placeholder="Enter end point" ng-model="pPolicy.endPoint">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+		    <label for="inputNumSessions"># of sessions</label>
+	    	<input type="number" class="form-control" id="inputNumSessions" placeholder="0" min="0" ng-model="pPolicy.numSessions">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+	    	<label for="inputBandwidthUP">Bandwidth UP</label>
+	    	<input type="number" class="form-control" id="inputBandwidthUP" placeholder="0" min="0" ng-model="pPolicy.bandwidthUP">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+	    	<label for="inputBandwidthDOWN">Bandwidth DOWN</label>
+	    	<input type="number" class="form-control" id="inputBandwidthDOWN" placeholder="0" min="0" ng-model="pPolicy.bandwidthDOWN">
+	  	</div>
+	  	<div class="form-group" style="margin-left: 10px; margin-right: 10px;">
+	    	<label for="inputPingMaxDelay">Ping max. delay</label>
+	    	<input type="number" class="form-control" id="inputPingMaxDelay" placeholder="0" min="0" step="1" ng-model="pPolicy.pingMaxDelay">
+	  	</div>	  	
+	  	<button type="button" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 15px;" ng-click="createNewSlasByCompany()">Submit</button>
+	</form>	
+</div>
+
+<div class="container" style="margin-top: 20px;" ng-show="showsessions && !showAlarmsBySessionIntCompany">
+	<h2>Table of SESSIONS</h2>
+  	<p>This table shows information of the SESSIONS registered for company: {{ companySelected }}</p> 
+  	<p>
+  		<button ng-click="goBackCompany()" class="btn btn-info">Go Back</button>
+  	</p> 
+  	<div style="max-height: 70vh; overflow:auto;">             
+	  	<table class="table table-striped header-fixed-companyses" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Session Id.</th>
+	        		<th>Destination IP</th>
+	        		<th>Destination Port</th>
+	        		<th>Origin IP</th>
+	        		<th>Origin Port</th>
+	        		<th>Alerts</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr ng-repeat="session in sessionListBycompany">
+			        <td>{{ session.sessionID }}</td>
+	        		<td>{{ session.destinationIP }}</td>
+	        		<td>{{ session.portDestinationIP }}</td>
+	        		<td>{{ session.originIP }}</td>
+	        		<td>{{ session.portOriginIP }}</td>
+	        		<td>        		   
+						<button class="button botonimagen" ng-show="{{session.anyAlarms}}" ng-click="showAlertsBySession(session)" style="border-radius: 15px;">
+							<img ng-src="./resources/images/hazard.png" alt="Hazard" height="25px" width="25px"> 
+						</button>
+					</td>   		
+	      		</tr>
+	      		<tr ng-show="showcompanysessionspin">
+	      			<td></td>
+	      			<td></td>
+			      	<td>
+			      		<wave-spinner></wave-spinner>
+			      	</td>
+			    </tr>
+		   </tbody>
+	    </table>
+	 </div>
+</div>
+
+<div class="container" style="margin-top: 20px;" ng-show="showAlarmsBySessionIntCompany">			
+		<div ng-include="'views/company/alertscompanymanagement.html'"></div>
+</div>	
+
+
+
+
+
+
+
+

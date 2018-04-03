@@ -1,0 +1,276 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Arqueopterix",
+		"_postman_id": "6a9c4c93-0833-3b8f-e4d1-ef6d35d5f774",
+		"description": "API Access to Policy Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/users/sign-up",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"admin\",\r\n\t\"password\": \"password\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"admin\",\r\n\t\"password\": \"password\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/users/list",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODQyNzQ4OX0.90c2PQHyFFVNez0LRMID40Zw4LWHxn51hYEbuBKjpg67q7MrcXoIEtDOVNETpR-q1DLlyOtrsU0zbzTwtPlf_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Policies",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/policies/list",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODQyNzQ4OX0.90c2PQHyFFVNez0LRMID40Zw4LWHxn51hYEbuBKjpg67q7MrcXoIEtDOVNETpR-q1DLlyOtrsU0zbzTwtPlf_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Sessions",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/sessions/list",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODcwOTY2MH0.ZCTuz_dfP92HucVsIlrCU5iIcQnGECy8_zNIjL1Zbpwb2vflt7kAkOi7mieA-e7Q3g_hU2yrHpork9FlOQRC9A",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Policy",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/policies/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODY5ODA5OX0.GE6P6cp8i9a_DcivPfn7lrFAj_aO9jw221edEVIhozkgMUIYCSIi9fAVALQ9-oFjos6vMGK4vAo2c8UmCuUERA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"endPoint\": \"192.168.1.1\",\n\t\"numSessions\": \"10\",\n\t\"bandwidthUP\": \"5000\",\n\t\"bandwidthDOWN\": \"5000\",\n\t\"pingMaxDelay\": \"20\",\n\t\"policyID\" : \"\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Policy",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/policies/remove",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODY5ODA5OX0.GE6P6cp8i9a_DcivPfn7lrFAj_aO9jw221edEVIhozkgMUIYCSIi9fAVALQ9-oFjos6vMGK4vAo2c8UmCuUERA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"endPoint\": \"192.168.1.1\",\n\t\"numSessions\": \"10\",\n\t\"bandwidthUP\": \"5000\",\n\t\"bandwidthDOWN\": \"5000\",\n\t\"pingMaxDelay\": \"20\",\n\t\"policyID\" : \"3905866\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Policy by ID",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/policies/get/7665744",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODY5ODA5OX0.GE6P6cp8i9a_DcivPfn7lrFAj_aO9jw221edEVIhozkgMUIYCSIi9fAVALQ9-oFjos6vMGK4vAo2c8UmCuUERA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"policyID\" : \"7665744\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Session",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/sessions/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODQyNzQ4OX0.90c2PQHyFFVNez0LRMID40Zw4LWHxn51hYEbuBKjpg67q7MrcXoIEtDOVNETpR-q1DLlyOtrsU0zbzTwtPlf_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"originIP\": \"192.168.1.2\",\n\t\"destinationIP\": \"192.168.1.1\",\n\t\"portOriginIP\": \"3006\",\n\t\"portDestinationIP\": \"3006\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Alert Session",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/sessions/alert",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODQyNzQ4OX0.90c2PQHyFFVNez0LRMID40Zw4LWHxn51hYEbuBKjpg67q7MrcXoIEtDOVNETpR-q1DLlyOtrsU0zbzTwtPlf_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"session\" : {\n\t\t\"sessionID\": \"5231360\",\n\t\t\"originIP\": \"192.168.1.2\",\n\t\t\"destinationIP\": \"192.168.1.1\",\n\t\t\"portOriginIP\": \"3006\",\n\t\t\"portDestinationIP\": \"3006\"},\n\t\"latency\": \"2\",\n\t\"jitter\" : \"2\",\n\t\"bandwithUp\" : \"6000\"\n\t\"bandwithDown\" : \"6000\",\n\t\"packetloss\" : \"0\",\n\t\"qoslevel\" : \"0\"\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Session",
+			"request": {
+				"url": "http://localhost:8080/policyserver-webcontroller/sessions/remove",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Arqueopterix eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxODQyNzQ4OX0.90c2PQHyFFVNez0LRMID40Zw4LWHxn51hYEbuBKjpg67q7MrcXoIEtDOVNETpR-q1DLlyOtrsU0zbzTwtPlf_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sessionID\": \"2012275\",\n    \"originIP\": \"192.168.1.2\",\n    \"destinationIP\": \"192.168.1.1\",\n    \"portOriginIP\": \"3006\",\n    \"portDestinationIP\": \"3006\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

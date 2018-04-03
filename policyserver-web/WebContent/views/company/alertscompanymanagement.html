@@ -1,0 +1,101 @@
+<h2>Table of ALERTS by a session</h2>
+ 	<p>This table shows information of the ALERTS registered for session: {{ selectedSession.sessionID }}</p>
+ 	<p>
+ 		<button ng-click="goBacksessioncompany()" class="btn btn-info">Go Back</button>
+ 	</p>   
+ 	<!-- <div style="max-height: 70vh; overflow:auto;" >  -->
+ 	<div class="" style="display:block; height:70vh; ">            
+  	<!-- <table class="table table-striped" style="margin-top: 10px;" ng-show="showAlarmsBySessionIntCompany"> -->
+  	<table class="table table-striped header-fixed" style="margin-top: 10px;" ng-show="showAlarmsBySessionIntCompany">
+    	<thead>
+      		<tr>
+        		<th>Alert Id.</th>
+        		<th>Session Id.</th>
+        		<th>Latency</th>
+        		<th>Jitter</th>
+        		<th>Bandw. UP</th>
+        		<th>Ban. DOWN</th>
+        		<th>Packet Loss</th>
+        		<th>QoS Level</th>
+        		<th>Recep. Date</th>
+        		<th>Policy Id.</th>
+        		<th>FIRED</th>
+      		</tr>
+		</thead>
+    	<tbody>
+      		<tr ng-repeat="alert in alarmsBySessionLocalCompany">
+		        <td>{{ alert.alertId }}</td>
+        		<td>{{ alert.session }}</td>
+        		<td>{{ alert.latency }}</td>
+        		<td>{{ alert.jitter }}</td>
+        		<td>{{ alert.bandwithUp }}</td>
+        		<td>{{ alert.bandwithDown }}</td>
+        		<td>{{ alert.packetloss }}</td>  
+        		<td>{{ alert.qoslevel }}</td>
+        		<td>{{ alert.date }}</td>
+        		<td >
+        			<button type="button" class="btn btn-info"  ng-show="{{ alert.showbutton }}"
+        				ng-click="selectAlert(alert)" style="padding: 4px 20px;font-size: 10px;" data-toggle="modal" data-target="#miModal">
+        				{{ alert.policyID }}
+        			</button>        		
+        		</td>  
+        		<td>
+        			<img ng-src="{{ alert.urlImg }}" alt="" height="42" width="42"> 
+        		</td>   		
+      		</tr>
+      		<tr ng-show="showsessionalertspincompany">
+      			<td></td>
+      			<td></td>
+      			<td></td>
+      			<td></td>
+      			<td></td>
+		      	<td>
+		      		<wave-spinner></wave-spinner>
+		      	</td>
+		      	<td></td>
+		      	<td></td>
+		      	<td></td>
+		      	<td></td>
+		      	<td></td>
+		    </tr> 
+  	</table>
+ 	</div>
+
+
+
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Policy associated</h4>
+      </div>
+      <div class="modal-body">
+      	       
+        <table class="table table-striped" style="margin-top: 10px;">
+	    	<thead>
+	      		<tr>
+	        		<th>Policy Id.</th>
+	        		<th>End point</th>
+	        		<th># sessions</th>
+	        		<th>Bandwidth UP</th>
+	        		<th>Bandwidth DOWN</th>
+	        		<th>Ping max. delay</th>
+	      		</tr>
+			</thead>
+	    	<tbody>
+	      		<tr>
+			        <td>{{ selectedPolicy.policyID }}</td>
+	        		<td>{{ selectedPolicy.endPoint }}</td>
+	        		<td>{{ selectedPolicy.numSessions }}</td>
+	        		<td>{{ selectedPolicy.bandwidthUP }}</td>
+	        		<td>{{ selectedPolicy.bandwidthDOWN }}</td>
+	        		<td>{{ selectedPolicy.pingMaxDelay }}</td>        		      		
+	      		</tr>
+	  	</table>
+      </div>
+    </div>
+  </div>
+</div>

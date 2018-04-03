@@ -1,0 +1,9 @@
+
+.settings/
+.project
+.classpath
+policyserver-web/bower_components/
+policyserver-web/node_modules/
+policyserver-web/WebContent/lib/
+policyserver-web/WebContent/resources/vendor/
+policyserver-web/WebContent/resources/

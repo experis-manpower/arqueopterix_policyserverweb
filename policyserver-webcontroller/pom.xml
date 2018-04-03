@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>es.experis.arqueopterix</groupId>
+		<artifactId>policyserver</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>policyserver-webcontroller</artifactId>
+	<name>policyserver-webcontroller</name>
+
+	<packaging>war</packaging>
+
+	<repositories>
+		<repository>
+			<id>Repo_Experis</id>
+			<url>http://10.50.208.39:8081/repository/internal</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>0.7.0</version>
+		</dependency>
+				
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.5.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.3.5.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.5.RELEASE</version>
+		</dependency>
+
+		<!-- Spring Security JSP Taglib -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+
+		<!-- jstl for jsp page -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.15</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.3.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>es.experis.arqueopterix</groupId>
+			<artifactId>policyserver-services</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>es.experis.arqueopterix</groupId>
+			<artifactId>policyserver-util</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.8</version>
+		</dependency>
+
+		<!-- Manage JSON Messages -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>es.experis.arqueopterix</groupId>
+			<artifactId>policyserver-dbmodel</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>policyserver-webcontroller</finalName>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>stop_server</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Stopping test server ..." />
+								<sshexec trust="true" host="${host}" username="${user}" password="${pass}" command="service wildfly stop" />
+								<sleep seconds="10" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>upload_config</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Copying CONFIGURATION to server ..." />
+								<scp trust="yes" todir="${user}:${pass}@${host}:${remote_config_dir_path}" password="${pass}">
+									<fileset dir="${config_dir_path}">
+										<include name="**" />
+									</fileset>
+								</scp>
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>deploy_on_server</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Copying WAR to server ..." />
+								<scp trust="true" file="${project_file}" todir="${user}:${pass}@${host}:${remote_path}" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>start_server</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Starting test server ..." />
+								<sshexec trust="true" host="${host}" username="${user}" password="${pass}" command="service wildfly start" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>check_deploy</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Waiting for app to get deployed ..." />
+								<waitfor maxwait="2" maxwaitunit="minute" checkevery="10" checkeveryunit="second">
+									<http url="http://${host}:8080" />
+								</waitfor>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>ant</groupId>
+						<artifactId>ant-jsch</artifactId>
+						<version>1.6.5</version>
+					</dependency>
+					<dependency>
+						<groupId>com.jcraft</groupId>
+						<artifactId>jsch</artifactId>
+						<version>0.1.42</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Profiles start here -->
+	<profiles>
+		<!-- maqueta environment -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<host>173.0.10.61</host>
+				<user>root</user>
+				<pass>3lQue4dm3lSer</pass>
+				<project_file>./target/smarthydro-webcontroller.war</project_file>
+				<remote_path>/opt/wildfly/standalone/deployments</remote_path>
+				<config_dir_path>../smarthydro-conf/Maqueta</config_dir_path>
+				<remote_config_dir_path>/tmp</remote_config_dir_path>
+			</properties>
+		</profile>
+		<!-- produccion environment -->
+		<profile>
+			<id>prod</id>
+			<properties>
+				<host>173.0.10.61</host>
+				<user>root</user>
+				<pass>3lQue4dm3lSer</pass>
+				<project_file>./target/smarthydro-webcontroller.war</project_file>
+				<remote_path>/opt/wildfly/standalone/deployments</remote_path>
+				<config_dir_path>../smarthydro-conf/Produccion</config_dir_path>
+				<remote_config_dir_path>/tmp</remote_config_dir_path>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>
